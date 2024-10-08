@@ -10,7 +10,7 @@ router.post('/', (req, res) => {
   
 
   // TODO: GET weather data from city name
-GET weatherData (city name){
+GET weatherData (cityName){
 
 }
 
@@ -18,7 +18,7 @@ GET weatherData (city name){
 
 
   // TODO: save city to search history
-UPDATE (/HistoryService/city.name){
+UPDATE (/HistoryService/cityName) {
 
 
 } 

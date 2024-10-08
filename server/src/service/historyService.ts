@@ -25,7 +25,7 @@ class HistoryService {
     }
   
   // TODO: Define a getCities method that reads the cities from the searchHistory.json file and returns them as an array of City objects
-async getCities() { 
+async getCities.searchHistory.json.cities() { 
 return [city]
 }
 

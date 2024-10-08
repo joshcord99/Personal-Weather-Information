@@ -11,7 +11,7 @@ Check the weather outlook for any desired city the user inputs.
 - [License](#license)
 - [Contributions](#contributions)
 - [Test](#test)
-- [Questions](#questions?)
+- [Questions](#questions)
 
 ## Installation Instructions
 Clone the repository.
@@ -28,7 +28,7 @@ Feel free to fork this project and submit a pull request for any improvements.
 
 
 
-## Questions?
+## Questions
 - GitHub: [joshcord99](https://github.com/joshcord99)
 - Email: joshcord99@gmail.com
   

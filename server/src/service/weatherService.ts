@@ -36,7 +36,10 @@ private async fetchLocationData(query: string) {
   }
 
   // TODO: Create buildGeocodeQuery method
- private buildGeocodeQuery(): string {}
+ private buildGeocodeQuery(): string {
+  return lat, long 
+ }
+
 
 
   // TODO: Create buildWeatherQuery method

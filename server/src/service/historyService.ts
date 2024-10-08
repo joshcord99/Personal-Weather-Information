@@ -28,7 +28,6 @@ class HistoryService {
 async getCities.searchHistory.json.cities() { 
 return [city]
 }
-
   // TODO Define an addCity method that adds a city to the searchHistory.json file
     async addCity(cities: string) {
       if (!city) {

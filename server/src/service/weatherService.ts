@@ -7,14 +7,6 @@ interface coordinates (){
 }
 // TODO: Define a class for the Weather object
 class Weather {
-  id: string;
-  main: string;
-  description: string;
-  icon: string;
-  city: string;
-  clouds: string;
-  wind: string;
-  visibility: string
 }
 
 // TODO: Complete the WeatherService class

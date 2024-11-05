@@ -4,45 +4,44 @@ const router = Router();
 import HistoryService from '../../service/historyService.js';
 import WeatherService from '../../service/weatherService.js';
 
-// TODO: POST Request with city name to retrieve weather data
-router.post('/', (req, res) => { 
+// POST Request with city name to retrieve weather data
+router.post('/', async (req, res) => { 
+  const { cityName } = req.body;
 
-  const {city } req.body;
+  if (!cityName) {
+    return res.status(400).json({ message: "City name is required" });
+  }
 
-  if (!city) {
-    return res.status(400).json {message: "city name is required'});
-   }
-try {
-  const weatherData = await WeatherService.get WeatherByCity(city)
-
-}
-  // TODO: GET weather data from city name
-router.get('history', async (req,res) =>{
-try {
-  const history = await HistoryService.getSearchHistory();
-  res.status
-}
-
-}
-
-
-
-
-
-  // TODO: save city to search history
-UPDATE (/HistoryService/cityName) {
-
-
-} 
-
-
+  try {
+    // Corrected method name for WeatherService
+    const weatherData = await WeatherService.getWeatherForCity(cityName);
+    await HistoryService.addCityToHistory(cityName); // Save the city to search history
+    return res.json(weatherData); // Ensured response is returned in all cases
+  } catch (error) {
+    return res.status(500).json({ message: "Error retrieving weather data", error });
+  }
 });
 
-// TODO: GET search history
-router.get('/history', async (req, res) => {});
+// GET request to retrieve weather data from search history
+router.get('/history', async (_, res) => { // Removed unused req parameter
+  try {
+    const history = await HistoryService.getHistory();
+    return res.json(history);
+  } catch (error) {
+    return res.status(500).json({ message: "Error retrieving search history", error });
+  }
+});
 
+// DELETE request to remove a city from search history by ID
+router.delete('/history/:id', async (req, res) => {
+  const { id } = req.params;
 
-// * BONUS TODO: DELETE city from search history
-router.delete('/history/:id', async (req, res) => {});
+  try {
+    await HistoryService.removeCityFromHistory(id);
+    return res.json({ message: "City deleted from history successfully" });
+  } catch (error) {
+    return res.status(500).json({ message: "Error deleting city from history", error });
+  }
+});
 
 export default router;

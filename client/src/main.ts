@@ -106,7 +106,6 @@ const renderForecast = (forecast: any): void => {
   headingCol.setAttribute('class', 'col-12');
   heading.textContent = '5-Day Forecast:';
   headingCol.append(heading);
-
   if (forecastContainer) {
     forecastContainer.innerHTML = '';
     forecastContainer.append(headingCol);
@@ -257,6 +256,7 @@ const handleSearchFormSubmit = (event: any): void => {
   }
 
   const search: string = searchInput.value.trim();
+  
   fetchWeather(search).then(() => {
     getAndRenderHistory();
   });

@@ -1,5 +1,5 @@
-import fs from 'node:fs/promises';
-import { v4 as uuidv4 } from 'uuid';
+import fs from "node:fs/promises";
+import { v4 as uuidv4 } from "uuid";
 
 // Define a City class with name and id properties
 class City {
@@ -15,15 +15,17 @@ class City {
 // Complete the HistoryService class
 class HistoryService {
   private async read() {
-    return await fs.readFile('db/db.json', {
-      flag: 'a+',
-      encoding: 'utf8',
+    const dbPath = new URL("../../db/db.json", import.meta.url);
+    return await fs.readFile(dbPath, {
+      flag: "a+",
+      encoding: "utf8",
     });
   }
 
   // Define a write method that writes the updated cities array to the db.json file
   private async write(cities: City[]) {
-    return await fs.writeFile('db/db.json', JSON.stringify(cities, null, '\t'));
+    const dbPath = new URL("../../db/db.json", import.meta.url);
+    return await fs.writeFile(dbPath, JSON.stringify(cities, null, "\t"));
   }
 
   // Define a getHistory method to fetch cities from db.json file as an array of City objects
@@ -44,7 +46,7 @@ class HistoryService {
   // Define an addCityToHistory method to add a city to db.json file
   async addCityToHistory(city: string): Promise<City> {
     if (!city) {
-      throw new Error('city cannot be blank');
+      throw new Error("city cannot be blank");
     }
 
     const newCity = new City(city, uuidv4());
